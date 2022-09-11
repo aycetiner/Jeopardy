@@ -1,4 +1,4 @@
-const BASE_URL = "http://jservice.io/";
+const BASE_URL = "https://jservice.io/";
 
 /** Make user instance from obj of user data and a token:
  *   - {username, name, createdAt, favorites[], ownStories[]}
@@ -144,18 +144,6 @@ function handleClick(evt) {
     return;
   }
 }
-
-// function handleClick(evt) {
-//   console.log(evt);
-//   if (evt.getAttribute("showing") === "null") {
-//     evt.innerHTML = evt.getAttribute("question");
-//     evt.setAttribute("showing", "yes");
-//   } else if (evt.getAttribute("showing") === "yes") {
-//     evt.innerHTML = evt.getAttribute("answer");
-//   } else {
-//     return;
-//   }
-// }
 
 /** Wipe the current Jeopardy board, show the loading spinner,
  * and update the button used to fetch data.
