@@ -5,26 +5,6 @@ const BASE_URL = "https://jservice.io/";
  *   - token
  */
 
-// categories is the main data structure for the app; it looks like this:
-
-//  [
-//    { title: "Math",
-//      clues: [
-//        {question: "2+2", answer: 4, showing: null},
-//        {question: "1+1", answer: 2, showing: null}
-//        ...
-//      ],
-//    },
-//    { title: "Literature",
-//      clues: [
-//        {question: "Hamlet Author", answer: "Shakespeare", showing: null},
-//        {question: "Bell Jar Author", answer: "Plath", showing: null},
-//        ...
-//      ],
-//    },
-//    ...
-//  ]
-
 let categories = [];
 
 /** Get NUM_CATEGORIES random category from API.
@@ -53,23 +33,13 @@ async function getCategoryIds() {
   return catId;
 }
 
-/** Return object with data about a category:
- *
- *  Returns { title: "Math", clues: clue-array }
- *
- * Where clue-array is:
- *   [
- *      {question: "Hamlet Author", answer: "Shakespeare", showing: null},
- *      {question: "Bell Jar Author", answer: "Plath", showing: null},
- *      ...
- *   ]
- */
+/** Return object with data about a category: */
 
 async function getCategory(catId) {
   console.log("getCategory function ran");
   console.log("beforecat", categories);
   for (id of catId) {
-    let { data } = await axios.get(`http://jservice.io/api/category?id=${id}`);
+    let { data } = await axios.get(`https://jservice.io/api/category?id=${id}`);
 
     //created clues object for questions and answers.
     let clues = _.sampleSize(data.clues, [(n = 5)]);
@@ -94,13 +64,7 @@ async function getCategory(catId) {
   return categories;
 }
 
-/** Fill the HTML table#jeopardy with the categories & cells for questions.
- *
- * - The <thead> should be filled w/a <tr>, and a <td> for each category
- * - The <tbody> should be filled w/NUM_QUESTIONS_PER_CAT <tr>s,
- *   each with a question for each category in a <td>
- *   (initally, just show a "?" where the question/answer would go.)
- */
+/** Fill the HTML table#jeopardy with the categories & cells for questions. */
 
 async function fillTable() {
   console.debug("fillTable Ran");
@@ -112,13 +76,6 @@ async function fillTable() {
   for (let i = 0; i < 5; i++) {
     $("tbody").append(`<tr> </tr>`);
     for (let j = 0; j < 6; j++) {
-      // console.log(categories[j].clues[i])
-
-      //   $("tbody tr")
-      //     .last()
-      //     .append(
-      //       `<td class="td" id="${categories[j].clues[i].questionId}" question="${categories[j].clues[i].question}" answer="${categories[j].clues[i].answer}" showing="${categories[j].clues[i].showing}"> ? </td>`
-      //     );
       $("tbody tr").last().append(`<td id="${j}-${i}">?</td>`);
     }
   }
