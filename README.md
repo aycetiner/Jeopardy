@@ -85,12 +85,12 @@ SOFTWARE.
 [python-url]: https://www.python.org/
 [postgresql.org]: https://img.shields.io/badge/-PostgreSQL-F5F5F5?style=for-the-badge&logo=postgresql
 [postgresql-url]: https://www.postgresql.org/
-[axios.com]:https://img.shields.io/badge/-Axios-F5F5F5?style=for-the-badge&logo=axios&logoColor=5E35CA
+[axios.com]:https://img.shields.io/badge/-Axios-EEEEEE?style=for-the-badge&logo=axios&logoColor=5E35CA
 [axios-url]:https://axios-http.com/
 [tmdb.com]: https://img.shields.io/badge/-TMDB_API-white?style=for-the-badge&logo=themoviedatabase
 [tmdb-url]: https://developers.themoviedb.org/3/getting-started/introduction
 [javascript.com]: https://img.shields.io/badge/-JavaScript-black?style=for-the-badge&logo=javascript&logoColor=FDCF35
 [javascript-url]: https://www.javascript.com/
-[html.com]: https://img.shields.io/badge/-HTML5-F5F5F5?style=for-the-badge&logo=html5&logoColor=E64A19
+[html.com]: https://img.shields.io/badge/-HTML5-EEEEEE?style=for-the-badge&logo=html5&logoColor=E64A19
 [html-url]: https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics
 [license-img]: https://img.shields.io/apm/l/l
