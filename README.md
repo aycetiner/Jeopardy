@@ -92,5 +92,5 @@ SOFTWARE.
 [javascript.com]: https://img.shields.io/badge/-JavaScript-black?style=for-the-badge&logo=javascript&style=for-the-badge&logoColor=FDCF35
 [javascript-url]: https://www.javascript.com/
 [html.com]: https://img.shields.io/badge/-HTML5-white?style=for-the-badge&logo=html5&style=for-the-badge&logoColor=E64A19
-[html.url]: https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics
+[html-url]: https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics
 [license-img]: https://img.shields.io/apm/l/l
