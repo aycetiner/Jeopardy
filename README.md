@@ -7,7 +7,7 @@
 The iconic American game show Jeopardy! created in this app. The application is designed with JS, HTML, CSS and is integrated with jService API
 
 ## How to Play
-- First click on the question mark icon to reveal the clue.
+- First click on the question mark icon will reveal the clue.
 - Second click will show you the answer!
 
 Click the [here](https://aycetiner.github.io/jeopardy/) to play! 
