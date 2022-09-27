@@ -5,7 +5,7 @@
 ## Summary
 
 The iconic American game show Jeopardy! created in this app. The application is designed with JS, HTML, CSS and is integrated with jService API
-Click the [here](https://aycetiner.github.io/Jeopardy/) to play! 
+Click the [here](https://aycetiner.github.io/jeopardy/) to play! 
 
 
 ## Built With
