@@ -5,6 +5,16 @@
   #8d2ab5
   #74119c
 */
+
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("bg-img.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .tablee th,
 .tablee td {
   padding: 5px;
@@ -16,6 +26,9 @@
   color: aliceblue;
 
   overflow: hidden;
+}
+.tablee td {
+  cursor: pointer;
 }
 
 .tablee {
@@ -49,4 +62,26 @@ h1 {
 @font-face {
   font-family: "Jeopardy";
   src: url("gyparody_hv.ttf");
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  display: none;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -1,14 +1,8 @@
 const BASE_URL = "https://jservice.io/";
 
-/** Make user instance from obj of user data and a token:
- *   - {username, name, createdAt, favorites[], ownStories[]}
- *   - token
- */
-
 let categories = [];
 
-/** Get NUM_CATEGORIES random category from API.
- *
+/** Get random categories from API.
  * Returns array of category ids
  */
 async function getCategoryIds() {
@@ -21,23 +15,17 @@ async function getCategoryIds() {
 
   let NUM_CATEGORIES = _.sampleSize(newResData, [(n = 6)]);
 
-  console.log("NUM CATEGORIES", NUM_CATEGORIES);
-  console.log(typeof NUM_CATEGORIES);
-
   let catId = [];
   for (let num of NUM_CATEGORIES) {
     let categoryID = num.id;
     catId.push(categoryID);
   }
-  console.log("catId:", catId);
   return catId;
 }
 
 /** Return object with data about a category: */
 
 async function getCategory(catId) {
-  console.log("getCategory function ran");
-  console.log("beforecat", categories);
   for (id of catId) {
     let { data } = await axios.get(`https://jservice.io/api/category?id=${id}`);
 
@@ -59,16 +47,12 @@ async function getCategory(catId) {
       clues: clueArray,
     });
   }
-  console.log("categories", categories);
-
   return categories;
 }
 
 /** Fill the HTML table#jeopardy with the categories & cells for questions. */
 
 async function fillTable() {
-  console.debug("fillTable Ran");
-
   categories.forEach((category) => {
     $("thead tr").append(`<th scope="col"> ${category.title}</th>`);
   });
@@ -88,17 +72,19 @@ async function fillTable() {
  * - if currently "question", show answer & set .showing to "answer"
  * - if currently "answer", ignore click
  * */
-function handleClick(evt) {
-  console.log(evt);
-  let j = parseInt(evt.getAttribute("id")[0]);
-  let i = parseInt(evt.getAttribute("id")[2]);
+function handleClick(target) {
+  if (target.tagName.toLowerCase() === "td") {
+    let j = parseInt(target.getAttribute("id")[0]);
+    let i = parseInt(target.getAttribute("id")[2]);
 
-  if (evt.innerText === "?") {
-    evt.innerHTML = `${categories[j].clues[i].question}`;
-  } else if (evt.innerText === `${categories[j].clues[i].question}`) {
-    evt.innerHTML = `${categories[j].clues[i].answer}`;
-  } else {
-    return;
+    if (target.innerText === "?") {
+      target.innerHTML = `${categories[j].clues[i].question}`;
+    } else if (target.innerText === `${categories[j].clues[i].question}`) {
+      target.style.backgroundColor = "#28a200";
+      target.innerHTML = `${categories[j].clues[i].answer}`;
+    } else {
+      return;
+    }
   }
 }
 
@@ -106,11 +92,13 @@ function handleClick(evt) {
  * and update the button used to fetch data.
  */
 
-function showLoadingView() {}
+function showLoadingView() {
+  document.querySelector(".loader").style.display = "block";
+}
 
-/** Remove the loading spinner and update the button used to fetch data. */
-
-function hideLoadingView() {}
+function hideLoadingView() {
+  document.querySelector(".loader").style.display = "none";
+}
 
 /** Start game:
  *
@@ -120,8 +108,10 @@ function hideLoadingView() {}
  * */
 
 async function setupAndStart() {
+  showLoadingView();
   let catId = await getCategoryIds();
   await getCategory(catId);
+  hideLoadingView();
   $(".container").prepend(
     $(`<table class="tablee">
     <thead>
@@ -150,10 +140,3 @@ async function setupAndStart() {
 }
 
 setupAndStart();
-/** On click of start / restart button, set up game. */
-
-// TODO
-
-/** On page load, add event handler for clicking clues */
-
-// TODO
