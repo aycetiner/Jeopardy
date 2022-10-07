@@ -81,6 +81,7 @@ function handleClick(target) {
       target.innerHTML = `${categories[j].clues[i].question}`;
     } else if (target.innerText === `${categories[j].clues[i].question}`) {
       target.style.backgroundColor = "#28a200";
+      target.style.cursor = "default";
       target.innerHTML = `${categories[j].clues[i].answer}`;
     } else {
       return;
